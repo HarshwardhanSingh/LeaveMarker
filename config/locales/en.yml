@@ -20,4 +20,20 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  authenticate_user:
+    failure: "You need to sign in for that!"
+  session:
+    create:
+      success: "Welcome %{username} !"
+      failure: "Wrong username or password!"
+    destroy:
+      success: "See ya!"
+  calendar:
+    create:
+      success: "Calendar Created :)"
+      failure: "Could not create calendar, something went wrong :("
+    update:
+      success: "Calendar Updated :)"
+      failure: "Something went wrong, could not update calendar :("
+    destroy:
+      success: "Calendar Removed :)"
