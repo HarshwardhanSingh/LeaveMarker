@@ -1,16 +1,17 @@
+# Handles user session (Google OAuth)
 class SessionsController < ApplicationController
-
   def new
   end
 
   def create
-    user = User.from_omniauth(env["omniauth.auth"])
+    user = User.from_omniauth(env['omniauth.auth'])
     session[:user_id] = user.id
-    redirect_to root_path, flash: { notice: "Welcome #{current_user.name.capitalize}" }
+    redirect_to calendars_path, flash:
+      { notice: "Welcome #{current_user.name.capitalize}" }
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, flash: { notice: "See ya!" }
+    redirect_to root_path, flash: { notice: 'See ya!' }
   end
 end
