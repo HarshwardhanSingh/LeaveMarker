@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160917041936) do
+ActiveRecord::Schema.define(version: 20160917043253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,19 @@ ActiveRecord::Schema.define(version: 20160917041936) do
   end
 
   create_table "leaves", force: :cascade do |t|
-    t.integer  "type",       default: 0, null: false
+    t.integer  "leave_type", default: 0, null: false
     t.datetime "start_date",             null: false
     t.datetime "end_date",               null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "reason_id"
+    t.index ["reason_id"], name: "index_leaves_on_reason_id", using: :btree
+  end
+
+  create_table "reasons", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,4 +52,5 @@ ActiveRecord::Schema.define(version: 20160917041936) do
     t.datetime "updated_at",       null: false
   end
 
+  add_foreign_key "leaves", "reasons"
 end

@@ -1,4 +1,5 @@
 class Leave < ApplicationRecord
-  enum type: [:half, :full]
+  enum leave_type: [:half, :full]
   validates_presence_of :start_date, :end_date
+  belongs_to :reason
 end
