@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :calendars
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.name = auth.info.name
